@@ -15,6 +15,9 @@ class HomeFragment : Fragment() {
     private var randomRange = 5
     private lateinit var scoreTextView: TextView
     private lateinit var guessButton: Button
+    private lateinit var newGameButton: Button
+    private lateinit var giveUpButton: Button
+    private lateinit var numberGrid: List<Button>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +27,19 @@ class HomeFragment : Fragment() {
 
         scoreTextView = view.findViewById(R.id.scoreTextView)
         guessButton = view.findViewById(R.id.guessButton)
+        newGameButton = view.findViewById(R.id.newGameButton)
+        giveUpButton = view.findViewById(R.id.giveUpButton)
 
         scoreTextView.text = "Score: $score"
+
+        numberGrid = listOf(
+            view.findViewById(R.id.numberButton1),
+            view.findViewById(R.id.numberButton2),
+            view.findViewById(R.id.numberButton3),
+            view.findViewById(R.id.numberButton4),
+            view.findViewById(R.id.numberButton5),
+            view.findViewById(R.id.numberButton6)
+        )
 
         startGame()
 
@@ -39,17 +53,37 @@ class HomeFragment : Fragment() {
             scoreTextView.text = "Score: $score"
         }
 
+        newGameButton.setOnClickListener {
+            startGame()
+        }
+
+        giveUpButton.setOnClickListener {
+            revealAnswer()
+        }
+
         return view
     }
 
     private fun startGame() {
+        score = 50
+        scoreTextView.text = "Score: $score"
 
-        val numbers = List(10) { Random.nextInt(1, randomRange + 1) }
-
+        val numbers = List(6) { Random.nextInt(1, randomRange + 1) }
+        for (i in numberGrid.indices) {
+            numberGrid[i].text = "?"
+            numberGrid[i].setOnClickListener {
+                numberGrid[i].text = numbers[i].toString()
+            }
+        }
     }
 
     private fun checkGuess(): Boolean {
-
         return Random.nextBoolean()
+    }
+
+    private fun revealAnswer() {
+        for (i in numberGrid.indices) {
+            numberGrid[i].text = (i + 1).toString()
+        }
     }
 }

@@ -31,31 +31,37 @@
         android:rowCount="2">
 
         <Button
+            android:id="@+id/numberButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
 
         <Button
+            android:id="@+id/numberButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
 
         <Button
+            android:id="@+id/numberButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
 
         <Button
+            android:id="@+id/numberButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
 
         <Button
+            android:id="@+id/numberButton5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
 
         <Button
+            android:id="@+id/numberButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="." />
